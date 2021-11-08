@@ -31,11 +31,6 @@ counter.hideturtle()
 counter.penup()
 counter.goto(-200,120)
 
-game_over = trtl.Turtle()
-game_over.hideturtle()
-game_over.penup()
-game_over.goto(0,0)
-
 wn = trtl.Screen()
 trtl.screensize(400, 300, "YellowGreen")
 #-----game functions--------
