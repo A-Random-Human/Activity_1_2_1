@@ -59,12 +59,6 @@ def spot_clicked(x,y):
     update_score()
     change_size()
     change_position()
-  else:
-    spot.goto(-20,0)
-    spot.turtlesize(10)
-    spot.shape("turtle")
-    spot.fillcolor("FireBrick")
-    trtl.bgcolor ("Yellow")
     
 def change_size():
   global spotSize
@@ -95,18 +89,27 @@ def manage_leaderboard():
   else:
     lb.draw_leaderboard(leader_names_list, leader_scores_list, False, spot, score)
 
+def game_over():
+  while timer_up == True:
+    spot.goto(-20,0)
+    spot.turtlesize(10)
+    spot.shape("turtle")
+    spot.fillcolor("FireBrick")
+    trtl.bgcolor ("Yellow")
+
 def countdown():
   global timer, timer_up
   counter.clear()
   if timer <= 0:
     counter.write("Time's Up", font=font_setup)
     timer_up = True
-    #manage_leaderboard()
+    game_over()
+    manage_leaderboard()
   else:
     counter.write("Timer: " + str(timer), font=font_setup)
     timer -= 1
     counter.getscreen().ontimer(countdown, counter_interval) 
-
+#Clicking Command
 spot.onclick(spot_clicked)
 
 #-----events----------------
